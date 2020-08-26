@@ -108,7 +108,7 @@ background: blue;
  ```css
  .test {
     background: blue;
-    padding: 0rem;
+    padding: 0px;
  }
  ```
 
