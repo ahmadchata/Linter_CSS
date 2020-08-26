@@ -135,7 +135,8 @@ background: blue;
 
 ## 🛠 Testing <a name = "test"></a>
 
-- To test run `bundle exec rspec`
+- cd into the project directory
+- To test run `rspec`
 
 ## ✒️ Author <a name = "author"></a>
 
