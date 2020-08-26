@@ -27,14 +27,14 @@ This project is a CSS Linter, It checks for errors in CSS files
 ## Space before opening brace
 - Checks if there's a space before the opening brace
 
- # good
+ ### good
 
  ```css
  .test {
     background: blue;
  }
  ```
- # bad
+ ### bad
 
  ```css
  .test{
@@ -44,14 +44,14 @@ This project is a CSS Linter, It checks for errors in CSS files
  ## Block Indentation
  - Checks if there's 2 spaces indentation in a block
 
- # good
+ ### good
 
  ```css
  .test {
     background: blue;
  }
  ```
- # bad
+ ### bad
 
  ```css
  .test {
@@ -61,14 +61,14 @@ background: blue;
  ## Lower case for hex colors
  - Checks if the hex code is in lower case
 
- # good
+ ### good
 
  ```css
  .test {
     background: #fff;
  }
  ```
- # bad
+ ### bad
 
  ```css
  .test {
@@ -78,14 +78,14 @@ background: blue;
  ## Empty Block
  - Checks if the block is empty
 
- # good
+ ### good
 
  ```css
  .test {
     background: blue;
  }
  ```
- # bad
+ ### bad
 
  ```css
  .test {
@@ -94,7 +94,7 @@ background: blue;
  ## No unit for Zero
  - Checks if there's no unit for 0 value
 
- # good
+ ### good
 
  ```css
  .test {
@@ -102,7 +102,7 @@ background: blue;
     padding: 0;
  }
  ```
- # bad
+ ### bad
 
  ```css
  .test {
