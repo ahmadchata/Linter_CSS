@@ -31,5 +31,14 @@ class StyleRules
       error.push("Unexpected empty block: #{index + 1}") if line_content.match(/{\n*}/)
     end
     error
+	end
+	
+	def no_unit_for_zero(lines, error)
+    lines.each_with_index do |line_content, index|
+      if line_content.include?(';')
+        error.push("Zero values do not need units on line: #{index + 1}") if line.match(/[\s](0\w|0%)/)
+      end
+    end
+    error
   end
 end
