@@ -9,6 +9,8 @@ describe StyleRules do
 	let(:right_brace) { ['.test {','  background: blue;', '}'] }
 	let(:wrong_brace) { ['.test{','  background: blue;', '}'] }
 	let(:right_block) { ['.test {','  background: blue;', '}'] }
+	let(:no_unit) { ['.test {','  background: blue;','  padding-top: 0;', '}'] }
+	let(:unit) { ['.test {','  background: blue;','  padding-top: 0rem;', '}'] }
 	let(:wrong_block) { ['.test {}'] }
   let(:error) { [] }
 
@@ -68,6 +70,22 @@ describe StyleRules do
 
 			it 'returns an error message with line number when the block is empty' do
 				expect(file.empty_block(wrong_block, error)).to_not eql([])
+			end
+	 	end
+	end
+
+	describe 'no_unit_for_zero' do
+		context 'when there is a unit for 0' do
+			it 'returns an error message with line number when a unit is given to 0' do
+				expect(file.no_unit_for_zero(unit, error)).to eql(['On line 3: No unit required if value is Zero'])
+			end
+
+			it 'returns no error message if no unit is given to 0' do
+				expect(file.no_unit_for_zero(no_unit, error)).to eql([])
+			end
+
+			it 'returns an error message with line number when a unit is given to 0' do
+				expect(file.no_unit_for_zero(unit, error)).to_not eql([])
 			end
 	 	end
 	end
