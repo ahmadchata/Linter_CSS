@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require_relative '../lib/messages'
 require_relative '../lib/style_rules'
 require_relative '../lib/style'
