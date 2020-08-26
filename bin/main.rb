@@ -1,3 +1,5 @@
+require_relative '../lib/messages'
+require 'colorize'
 class StyleRules
 	def opening_brace_space(lines, error)
 		lines.each_with_index do |line_content, index|
@@ -63,7 +65,7 @@ file = File.open(ARGV[0]).to_a
 errors = Style.check(file)
 
 if errors.empty?
-  puts 'no errors found'
+  puts Messages::ZERO_UNIT
 else
-  errors.each { |error| puts error }
+  errors.each { |error| puts error.red }
 end
