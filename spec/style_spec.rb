@@ -8,6 +8,8 @@ describe StyleRules do
 	let(:right_indent) { ['.test {','  background: blue;', '}'] }
 	let(:right_brace) { ['.test {','  background: blue;', '}'] }
 	let(:wrong_brace) { ['.test{','  background: blue;', '}'] }
+	let(:right_block) { ['.test {','  background: blue;', '}'] }
+	let(:wrong_block) { ['.test {}'] }
   let(:error) { [] }
 
   describe '#lower_case_color' do
@@ -50,6 +52,22 @@ describe StyleRules do
 
 			it 'returns an error message with line number when there is no space before opening brace' do
 				expect(file.opening_brace_space(wrong_brace, error)).to_not eql([])
+			end
+	 	end
+	end
+
+	describe 'empty_block' do
+		context 'when there is a block' do
+			it 'returns an error message with line number when the block is empty' do
+				expect(file.empty_block(wrong_block, error)).to eql(['On line 1: Block is empty'])
+			end
+
+			it 'returns no error message if the block is not empty' do
+				expect(file.empty_block(right_block, error)).to eql([])
+			end
+
+			it 'returns an error message with line number when the block is empty' do
+				expect(file.empty_block(wrong_block, error)).to_not eql([])
 			end
 	 	end
 	end
