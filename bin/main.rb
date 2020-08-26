@@ -2,7 +2,7 @@ class StyleRules
 	def opening_brace_space(lines, error)
 		lines.each_with_index do |line_content, index|
 			if line_content.include?('{')
-				error.push("Please add a space before opening brace on line #{index + 1}") if line_content.match(/([a-zA-Z]+|\]|\)){/)
+				error.push("Add a space before the opening brace on line #{index + 1}") if line_content.match(/([a-zA-Z]+|\]|\)){/)
 			end
 		end
 		error
@@ -16,3 +16,13 @@ class StyleRules
     end
     error
 	end
+
+	def lower_case_color(lines, error)
+		lines.each_with_index do |line_content, index|
+			if line_content.include?('#')
+				error.push("Use lower case for hex color code #{index + 1}") if line_content.match(/#[A-Z]/)
+			end
+		end
+		error
+	end
+end
