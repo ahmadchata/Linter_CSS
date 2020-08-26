@@ -6,11 +6,12 @@ require 'colorize'
 file = File.open(ARGV[0]).to_a
 errors = Style.check(file)
 
+print Messages::DONE
 if errors.empty?
-  print Messages::DONE
   print Messages::NO_ERRORS
+elsif errors.length == 1
+  puts "#{errors.length} error".red
 else
-  print Messages::DONE
   puts "#{errors.length} errors".red
-  errors.each { |error| puts error.to_s.red }
+  errors.each { |error| puts error.red }
 end
