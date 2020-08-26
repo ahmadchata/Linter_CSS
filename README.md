@@ -1,4 +1,4 @@
-# CSS Linter
+# Ruby Capstone (CSS Linter)
 
 [![View Code](https://img.shields.io/badge/View%20-Code-green)](https://github.com/ahmadchata/Linter_CSS/tree/feature_linters)
 [![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)](https://github.com/ahmadchata/Linter_CSS/issues)
@@ -21,7 +21,7 @@
 
 This project is a CSS Linter, It checks for errors in CSS files
 
-<h3>Rules <a name = "rules"></a></h3>
+## Rules <a name = "rules"></a>
 <h4>The Style rules created are listed below:</h4>
 
 ## Space before opening brace
