@@ -6,6 +6,8 @@ describe StyleRules do
 	let(:right_color) { ['#fff;'] }
 	let(:wrong_indent) { ['.test {','background: blue;', '}'] }
 	let(:right_indent) { ['.test {','  background: blue;', '}'] }
+	let(:right_brace) { ['.test {','  background: blue;', '}'] }
+	let(:wrong_brace) { ['.test{','  background: blue;', '}'] }
   let(:error) { [] }
 
   describe '#lower_case_color' do
@@ -32,6 +34,22 @@ describe StyleRules do
 
 			it 'returns no error message if the block is properly indented' do
 				expect(file.indentation_of_block(right_indent, error)).to eql([])
+			end
+	 	end
+	end
+
+	describe 'opening_brace_space' do
+		context 'when there is an opening brace' do
+			it 'returns an error message with line number when there is no space before opening brace' do
+				expect(file.opening_brace_space(wrong_brace, error)).to eql(['On line 1: Add a space before the opening brace'])
+			end
+
+			it 'returns no error message if the opening brace has a space' do
+				expect(file.opening_brace_space(right_brace, error)).to eql([])
+			end
+
+			it 'returns an error message with line number when there is no space before opening brace' do
+				expect(file.opening_brace_space(wrong_brace, error)).to_not eql([])
 			end
 	 	end
 	end
