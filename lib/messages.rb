@@ -1,4 +1,7 @@
 require 'colorize'
+
 module Messages
-  ZERO_UNIT = 'No errors'.red
+  DONE = 'LINTER HAS FINISHED CHECKING YOUR FILE'.bold
+  LINE = '**************************************'
+  NO_ERRORS = 'No errors'.green.bold
 end

@@ -4,7 +4,7 @@ class StyleRules
 	def opening_brace_space(lines, error)
 		lines.each_with_index do |line_content, index|
 			if line_content.include?('{')
-				error.push("Add a space before the opening brace on line #{index + 1}") if line_content.match(/([a-zA-Z]+|\]|\)){/)
+				error.push("On line #{index + 1}: Add a space before the opening brace") if line_content.match(/([a-zA-Z]+|\]|\)){/)
 			end
 		end
 		error
@@ -13,7 +13,7 @@ class StyleRules
 	def indentation_of_block(lines, error)
     lines.each_with_index do |line_content, index|
       if line_content.include?(';')
-        error.push("Indentation of 2 spaces expected on line #{index + 1}") unless line_content.match(/^\s{2}[a-zA-Z]/)
+        error.push("On line #{index + 1}: Indentation of 2 spaces required") unless line_content.match(/^\s{2}[a-zA-Z]/)
       end
     end
     error
@@ -22,7 +22,7 @@ class StyleRules
 	def lower_case_color(lines, error)
 		lines.each_with_index do |line_content, index|
 			if line_content.include?('#')
-				error.push("Use lower case for hex color code on line #{index + 1}") unless line_content.match(/#[a-z].[a-z];/)
+				error.push("On line #{index + 1}: Use lower case for hex color code") unless line_content.match(/#[a-z].[a-z];/)
 			end
 		end
 		error
@@ -30,7 +30,7 @@ class StyleRules
 
 	def empty_block(lines, error)
     lines.each_with_index do |line_content, index|
-      error.push("Unexpected empty block: #{index + 1}") if line_content.match(/{\n*}/)
+      error.push("On line #{index + 1}: Block is empty") if line_content.match(/{\n*}/)
     end
     error
 	end
@@ -38,7 +38,7 @@ class StyleRules
 	def no_unit_for_zero(lines, error)
     lines.each_with_index do |line_content, index|
       if line_content.include?(';')
-        error.push("No unit required if value is Zero on line: #{index + 1}") if line_content.match(/[\s](0\w|0%)/)
+        error.push("On line #{index + 1}: No unit required if value is Zero") if line_content.match(/[\s](0\w|0%)/)
       end
     end
     error
@@ -65,7 +65,11 @@ file = File.open(ARGV[0]).to_a
 errors = Style.check(file)
 
 if errors.empty?
-  puts Messages::ZERO_UNIT
+	puts Messages::DONE
+	puts Messages::LINE
+  puts Messages::NO_ERRORS
 else
+	puts Messages::DONE
+	puts Messages::LINE
   errors.each { |error| puts error.red }
 end
