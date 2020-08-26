@@ -36,9 +36,34 @@ class StyleRules
 	def no_unit_for_zero(lines, error)
     lines.each_with_index do |line_content, index|
       if line_content.include?(';')
-        error.push("Zero values do not need units on line: #{index + 1}") if line.match(/[\s](0\w|0%)/)
+        error.push("No unit required if value is Zero on line: #{index + 1}") if line_content.match(/[\s](0\w|0%)/)
       end
     end
     error
   end
+end
+
+class Style
+	def Style.check(file)
+		errors = []
+		lines = file
+		if !file.empty?
+			check = StyleRules.new
+			check.empty_block(lines, errors)
+			check.opening_brace_space(lines, errors)
+			check.indentation_of_block(lines, errors)
+			check.lower_case_color(lines, errors)
+			check.no_unit_for_zero(lines, errors)
+		end
+		errors
+	end
+end
+
+file = File.open(ARGV[0]).to_a
+errors = Style.check(file)
+
+if errors.empty?
+  puts 'no errors found'
+else
+  errors.each { |error| puts error }
 end
