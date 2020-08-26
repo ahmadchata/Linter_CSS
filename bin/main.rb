@@ -3,8 +3,6 @@ require_relative '../lib/style_rules'
 require_relative '../lib/style'
 require 'colorize'
 
-
-
 file = File.open(ARGV[0]).to_a
 errors = Style.check(file)
 
@@ -13,6 +11,6 @@ if errors.empty?
   print Messages::NO_ERRORS
 else
 	print Messages::DONE
-	print "#{errors.length} errors".red
-  errors.each { |error| puts "\n #{error}".red }
+	puts "#{errors.length} errors".red
+  errors.each { |error| puts "#{error}".red }
 end
