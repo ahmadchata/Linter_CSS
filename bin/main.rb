@@ -25,4 +25,11 @@ class StyleRules
 		end
 		error
 	end
+
+	def empty_block(lines, error)
+    lines.each_with_index do |line_content, index|
+      error.push("Unexpected empty block: #{index + 1}") if line_content.match(/{\n*}/)
+    end
+    error
+  end
 end
