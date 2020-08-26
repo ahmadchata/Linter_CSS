@@ -15,6 +15,7 @@
 <a href="#set">Setup</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#with">Built with</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#use">Using Linter</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#test">Testing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#author">Author</a>
 
 ## About <a name = "about"></a>
@@ -111,7 +112,6 @@ background: blue;
  }
  ```
 
-
 ## 🔧 Built with<a name = "with"></a>
 
 - Ruby
@@ -131,7 +131,11 @@ background: blue;
 
 - cd into the project directory
 - run `bin/main.rb <target_file>`
-Example is `bin/main.rb css/error.css` to check the error.css file
+- Example is `bin/main.rb css/error.css` to check the error.css file
+
+## 🛠 Testing <a name = "test"></a>
+
+- To test run `bundle exec rspec`
 
 ## ✒️ Author <a name = "author"></a>
 
