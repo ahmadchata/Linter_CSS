@@ -20,7 +20,7 @@ class StyleRules
 	def lower_case_color(lines, error)
 		lines.each_with_index do |line_content, index|
 			if line_content.include?('#')
-				error.push("Use lower case for hex color code #{index + 1}") if line_content.match(/#[A-Z]/)
+				error.push("Use lower case for hex color code on line #{index + 1}") unless line_content.match(/#[a-z].[a-z];/)
 			end
 		end
 		error
