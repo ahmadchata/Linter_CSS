@@ -1,11 +1,4 @@
 class StyleRules
-  attr_accessor :lines, :error
-
-  def initialize
-    @lines = lines
-    @error = error
-  end
-
   def opening_brace_space(lines, error)
     lines.each_with_index do |line_content, index|
       next unless line_content.include?('{')
