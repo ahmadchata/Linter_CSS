@@ -23,7 +23,7 @@ class StyleRules
     lines.each_with_index do |line_content, index|
       next unless line_content.include?('#')
 
-      error.push("On line #{index + 1}: Use lower case for hex color code") unless line_content.match(/#[a-z].[a-z];/)
+      error.push("On line #{index + 1}: Use lower case for hex color code") unless line_content.match(/"^#[a-z0-9_\-]+$"/)
     end
     error
   end
